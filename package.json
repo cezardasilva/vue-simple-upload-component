@@ -1,0 +1,27 @@
+{
+  "name": "vue-upload-component",
+  "version": "1.0.31",
+  "description": "An upload component for Vue.js 2.x",
+  "main": "./main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cezardasilva/vue-upload-component.git"
+  },
+  "keywords": [
+    "vue",
+    "vue-component",
+    "vue-upload",
+    "file-upload",
+    "uploader",
+    "upload"
+  ],
+  "author": "Cezar Alexandre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cezardasilva/vue-upload-component/issues"
+  },
+  "homepage": "https://github.com/cezardasilva/vue-upload-component#readme",
+  "peerDependencies": {
+    "vue": "2.x.x"
+  }
+}
