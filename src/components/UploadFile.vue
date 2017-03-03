@@ -81,6 +81,10 @@ export default {
       type: String,
       required: false,
       default: "Send"
+    },
+    key: {
+      type: String,
+      required: false
     }
   },
 
