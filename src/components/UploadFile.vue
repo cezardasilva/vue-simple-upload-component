@@ -9,10 +9,7 @@
 	color: #FFF;
 	font-size: 0.877em;
 	border: none;
-	border-radius: 30px;
-	text-transform: uppercase;
 	padding: 15px 30px;
-	margin: auto;
 	cursor: pointer;
   -moz-transition: all .2s;
   -o-transition: all .2s;
@@ -27,13 +24,13 @@
   overflow: hidden;
   position: absolute;
   z-index: -1;
+}
 
-  & + label {
-    font-size: 1em;
-    color: #d9534f;
-    display: inline-block;
-    cursor: pointer; /* "hand" cursor */
-  }
+.inputfile + label {
+  font-size: 1em;
+  color: #d9534f;
+  display: inline-block;
+  cursor: pointer; /* "hand" cursor */
 }
 
 .inputfile:focus + label,
@@ -64,12 +61,12 @@ export default {
 
   props: {
     message: {
-      type: Text,
+      type: String,
       required: false,
       default: "Choose a file..."
     },
     buttonTitle: {
-      type: Text,
+      type: String,
       required: false,
       default: "Send"
     }
