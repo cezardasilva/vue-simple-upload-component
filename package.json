@@ -1,6 +1,6 @@
 {
   "name": "vue-simple-upload-component",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple upload component for Vue.js 2.x",
   "main": "./main.js",
   "repository": {
