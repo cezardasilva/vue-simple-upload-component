@@ -1,16 +1,21 @@
 <style>
 .upload-file{
   display: flex;
-  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border: 2px dashed #f0f0f0;
+  border-radius: 4px;
+  margin: 20px 0;
+  justify-content: space-between;
 }
 
 .upload-file .button{
-	background: #00adb5;
-	color: #FFF;
-	font-size: 0.877em;
-	border: none;
-	padding: 15px 30px;
-	cursor: pointer;
+  background: #393e46;
+  color: #FFF;
+  font-size: 0.877em;
+  border: none;
+  padding: 10px 30px;
+  cursor: pointer;
   -moz-transition: all .2s;
   -o-transition: all .2s;
   -webkit-transition: all .2s;
@@ -27,15 +32,22 @@
 }
 
 .inputfile + label {
-  font-size: 1em;
-  color: #d9534f;
+  font-size: 0.877em;
+  color: #393e46;
   display: inline-block;
-  cursor: pointer; /* "hand" cursor */
+  cursor: pointer;
+  padding: 10px 30px;
+  background-color: #ffffff;
+  border: 0;
+  margin-right: 10px;
+  border-radius: 3px;
+  flex: 1 1 0%;
 }
 
 .inputfile:focus + label,
 .inputfile + label:hover {
-  color: darken(#d9534f, 15%);
+  color: #30343b;
+
 }
 
 </style>
