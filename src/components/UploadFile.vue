@@ -54,8 +54,8 @@
 
 <template>
   <div class="upload-file">
-    <input type="file" name="uploadFile" class="inputfile" :id="`uploadFile`" @change="changed($event)">
-    <label :for="`uploadFile`">{{message}}</label>
+    <input type="file" name="uploadFile" class="inputfile" :id="`uploadFile${id}`" @change="changed($event)">
+    <label :for="`uploadFile${id}`">{{message}}</label>
     <button v-show="file" type="button" class="button" @click="send()">{{buttonTitle}}</button>
   </div>
 </template>
@@ -67,7 +67,8 @@ export default {
 
   data(){
     return {
-      file: {}
+      file: {},
+      id: 0
     }
   },
 
@@ -82,6 +83,11 @@ export default {
       required: false,
       default: "Send"
     }
+  },
+
+  ready(){
+    var inputsfiles = document.querySelectorAll(".inputfile")
+    this.id = inputsfiles.length - 1
   },
 
   methods: {
