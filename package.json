@@ -23,5 +23,9 @@
   "homepage": "https://github.com/cezardasilva/vue-upload-component#readme",
   "peerDependencies": {
     "vue": "2.x.x"
-  }
+  },
+  "dependencies": {
+     "vue": "^2.1.0",
+     "vue-resource": "^1.0.3"
+   },
 }

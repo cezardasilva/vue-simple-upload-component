@@ -9,10 +9,33 @@ npm install vue-simple-upload-component --save-dev
 ```
 
 # Usage
+
+## Default
+
 ```Vue
 <template>
   <div>
     <upload-file message="Choose file..." buttonTitle="Send File" @send-file="uploadFunc($event)"></upload-file>
+  </div>
+</template>
+
+<script>
+import UploadFile from 'vue-simple-upload-component'
+export default {
+	name: "MyComponent",
+	components: {
+		UploadFile
+	}
+}
+</script>
+```
+
+## With Button custom class
+
+```Vue
+<template>
+  <div>
+    <upload-file :buttonClass="['my-class']" message="Choose file..." buttonTitle="Send File"  @send-file="uploadFunc($event)"></upload-file>
   </div>
 </template>
 
