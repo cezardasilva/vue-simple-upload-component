@@ -85,7 +85,9 @@ export default {
 		buttonClass: {
 			type: Array,
 			required: false,
-			default: []
+			default() {
+				return []
+			}
 		},
 		itemIndex: {
 			type: String,
