@@ -10,12 +10,12 @@ npm install vue-simple-upload-component --save-dev
 
 # Usage
 
-## Default
+## Drag and Drop mode
 
 ```Vue
 <template>
   <div>
-    <upload-file message="Choose file..." buttonTitle="Send File" @send-file="uploadFunc($event)"></upload-file>
+  <upload-file message="Choose a file or drag it here" :isDragDrop="true" @selected-file="uploadAction($event)" @remove-file="removeAction($event)"></upload-file>
   </div>
 </template>
 
@@ -30,12 +30,12 @@ export default {
 </script>
 ```
 
-## With Button custom class
+## Without Drag and Drop
 
 ```Vue
 <template>
   <div>
-    <upload-file :buttonClass="['my-class']" message="Choose file..." buttonTitle="Send File"  @send-file="uploadFunc($event)"></upload-file>
+  <upload-file message="Choose a file..." :showButton="true" @selected-file="uploadAction($event)" @remove-file="removeAction($event)"></upload-file>
   </div>
 </template>
 

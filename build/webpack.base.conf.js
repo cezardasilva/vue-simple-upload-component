@@ -8,8 +8,8 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, '../dist'),
-		publicPath: '/',
-		filename: '[name].js'
+		publicPath: '../',
+		filename: 'vue-super-autocomplete.js'
 	},
 	module: {
 		rules: [
