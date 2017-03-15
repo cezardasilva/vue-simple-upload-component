@@ -1,63 +1,30 @@
 var path = require('path')
 var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-	entry: './src/index.js',
-	output: {
-		path: path.resolve(__dirname, 'dist'),
-		publicPath: 'dist/',
-		filename: 'vue-simple-upload.js'
+var baseWebpackConfig = require('./webpack.base.conf')
+var merge = require('webpack-merge')
+
+var webpackConfig = merge(baseWebpackConfig, {
+	entry: {
+		app: './src/index.js'
 	},
-	module: {
-		rules: [
-			{
-				test: /\.vue$/,
-				loader: 'vue-loader',
-				options: {
-					// vue-loader options go here
-					'scss': 'vue-style-loader!css-loader!sass-loader',
-					'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
-				}
-			},
-			{
-				test: /\.js$/,
-				loader: 'babel-loader',
-				exclude: /node_modules/
-			},
-			{
-				test: /\.(png|jpg|gif|svg)$/,
-				loader: 'file-loader',
-				options: {
-					name: '[name].[ext]?[hash]'
-				}
+	plugins: [
+		new webpack.DefinePlugin({
+			'process.env': {
+				NODE_ENV: '"production"'
 			}
-		]
-	},
-	plugins: [],
-	resolve: {
-		alias: {
-			'vue$': 'vue/dist/vue.common.js'
-		}
-	}
-}
-
-module.exports.devtool = '#source-map'
-// http://vue-loader.vuejs.org/en/workflow/production.html
-module.exports.plugins = (module.exports.plugins || []).concat([
-	new webpack.DefinePlugin({
-		'process.env': {
-			NODE_ENV: '"production"'
-		}
-	}),
-	new webpack.optimize.UglifyJsPlugin({
-		sourceMap: false,
-		compress: {
-			warnings: false,
-			drop_console: true
-		}
-	}),
-	new webpack.LoaderOptionsPlugin({
-		minimize: true
-	})
-])
+		}),
+		new webpack.optimize.OccurrenceOrderPlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+			sourceMap: false,
+			compress: {
+				warnings: false,
+				drop_console: true
+			}
+		}),
+		new webpack.LoaderOptionsPlugin({
+			minimize: true
+		})
+	]
+})
+module.exports = webpackConfig

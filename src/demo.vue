@@ -1,7 +1,7 @@
 <template>
 	<div class="upload-demo">
 
-		<upload-file message="Choose a file..." @send-file="uploadAction($event)"></upload-file>
+		<upload-file message="Choose a file or drag it here" :isDragDrop="true" @selected-file="uploadAction($event)" @remove-file="removeAction($event)"></upload-file>
 
 		<div class="uploaded-file" v-if="file">
 			<code>
@@ -30,8 +30,10 @@ export default {
 
 	methods: {
 		uploadAction(e){
-			console.log(e);
 			this.file = Object.assign(e)
+		},
+		removeAction(){
+			this.file = null
 		}
 	}
 }
