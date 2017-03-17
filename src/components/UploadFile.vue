@@ -72,7 +72,7 @@
 			<template v-else><div v-html="dragOverMessage"></div></template>
 		</label>
 		<transition name="fade">
-			<div :id="`upload-file-preview-container${itemIndex}`" v-show="file">
+			<div :id="`upload-file-preview-container${itemIndex}`" class="upload-file-preview-container" v-show="file">
 
 			</div>
 		</transition>
@@ -93,7 +93,8 @@ export default {
 			<div class="upload-file-details">
 			<span class="upload-file-filename"></span>
 			<button type="button" class="upload-file-remove-file">&times; ${this.cancelButtonTitle}</button>
-			</div>`
+			</div>
+			<div class="upload-file-message" v-html="${uploadedMessage}"></div>`
 		}
 	},
 
@@ -107,6 +108,11 @@ export default {
 			type: String,
 			required: false,
 			default: "Drag it here"
+		},
+		uploadedMessage: {
+			type: String,
+			required: false,
+			default: ""
 		},
 		showButton: {
 			type: Boolean,
