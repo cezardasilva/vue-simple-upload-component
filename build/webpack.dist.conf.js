@@ -23,6 +23,10 @@ var webpackConfig = merge(baseWebpackConfig, {
 					loaders: {
 						'scss': 'vue-style-loader!css-loader!sass-loader',
 						'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+						css: ExtractTextPlugin.extract({
+							use: 'css-loader',
+							fallback: 'vue-style-loader' // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
+						})
 					}
 				}
 			}
@@ -45,10 +49,7 @@ var webpackConfig = merge(baseWebpackConfig, {
 		new webpack.LoaderOptionsPlugin({
 			minimize: true
 		}),
-		new ExtractTextPlugin({
-		    filename: "[name].[contenthash].css",
-		    disable: process.env.NODE_ENV === "development"
-		})
+		new ExtractTextPlugin("style.css")
 	]
 })
 module.exports = webpackConfig
