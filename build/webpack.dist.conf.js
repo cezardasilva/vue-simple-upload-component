@@ -8,6 +8,11 @@ var webpackConfig = merge(baseWebpackConfig, {
 	entry: {
 		app: './src/index.js'
 	},
+	output: {
+		filename: 'dist/vue-simple-upload.js',
+		library: 'VueUploadFile',
+		libraryTarget: 'umd'
+	},
 	plugins: [
 		new webpack.DefinePlugin({
 			'process.env': {

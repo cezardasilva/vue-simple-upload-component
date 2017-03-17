@@ -1,2 +1,4 @@
-const UploadFile = require('./components/UploadFile.vue')
-module.exports = UploadFile
+import UploadFile from './components/UploadFile.vue'
+
+export default UploadFile
+export { UploadFile }
