@@ -3,14 +3,6 @@ var webpack = require('webpack')
 var projectRoot = path.resolve(__dirname, '../')
 
 module.exports = {
-	entry: {
-		app: './src/index.js'
-	},
-	output: {
-		path: path.resolve(__dirname, '../dist'),
-		publicPath: '../',
-		filename: 'vue-super-autocomplete.js'
-	},
 	module: {
 		rules: [
 			{

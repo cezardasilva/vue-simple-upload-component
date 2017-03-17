@@ -1,4 +1,4 @@
-<style lang="scss">
+<style scoped lang="scss">
 .upload-file{
 	display: flex;
 	padding: 10px 20px;
@@ -80,7 +80,7 @@
 	</div>
 </template>
 
-<script>
+<script type="text/babel">
 
 export default {
 	name: "UploadFile",

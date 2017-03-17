@@ -1,20 +1,52 @@
 var path = require('path')
 var webpack = require('webpack')
 
-var baseWebpackConfig = require('./webpack.base.conf')
-var merge = require('webpack-merge')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrors = require('friendly-errors-webpack-plugin')
 
-
-var webpackConfig = merge(baseWebpackConfig, {
+var webpackConfig = {
 	entry: {
 		app: './src/demo.js'
 	},
+	output: {
+		path: path.resolve(__dirname, '../dist'),
+		filename: 'vue-simple-upload.js'
+	},
+	module: {
+		rules: [
+			{
+				test: /\.vue$/,
+				loader: 'vue-loader',
+				options: {
+					loaders: {
+						'scss': 'vue-style-loader!css-loader!sass-loader',
+						'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+					}
+				}
+			},
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: [
+					"babel-loader",
+					"eslint-loader"
+				]
+			},
+			{
+				test: /\.(png|jpg|gif|svg)$/,
+				loader: 'file-loader',
+				options: {
+					name: '[name].[ext]?[hash]'
+				}
+			}
+		]
+	},
+	resolve: {
+		alias: {
+			'vue$': 'vue/dist/vue.common.js'
+		}
+	},
 	plugins: [
-		new webpack.DefinePlugin({
-			'process.env': "'development'"
-		}),
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.NoEmitOnErrorsPlugin(),
 		new HtmlWebpackPlugin({
@@ -22,8 +54,10 @@ var webpackConfig = merge(baseWebpackConfig, {
 			template: './demo/index.html',
 			inject: true
 		}),
-		new FriendlyErrors()
-	]
-})
+		new FriendlyErrors(),
+
+	],
+	devtool: '#eval-source-map'
+}
 
 module.exports = webpackConfig

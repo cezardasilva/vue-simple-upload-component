@@ -1,18 +1,14 @@
 var path = require('path')
 var webpack = require('webpack')
-
-var baseWebpackConfig = require('./webpack.base.conf')
-var merge = require('webpack-merge')
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
-var webpackConfig = merge(baseWebpackConfig, {
+
+var webpackConfig = {
 	entry: {
 		app: './src/index.js'
 	},
 	output: {
-		filename: 'vue-simple-upload.js',
-		library: 'VueUploadFile',
-		libraryTarget: 'umd'
+		filename: 'vue-simple-upload.js'
 	},
 	module: {
 		rules: [
@@ -22,15 +18,35 @@ var webpackConfig = merge(baseWebpackConfig, {
 				options: {
 					loaders: {
 						'scss': 'vue-style-loader!css-loader!sass-loader',
-						'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+						//'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
 						css: ExtractTextPlugin.extract({
 							use: 'css-loader',
 							fallback: 'vue-style-loader' // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
 						})
 					}
 				}
+			},
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: [
+					"babel-loader",
+					"eslint-loader"
+				]
+			},
+			{
+				test: /\.(png|jpg|gif|svg)$/,
+				loader: 'file-loader',
+				options: {
+					name: '[name].[ext]?[hash]'
+				}
 			}
 		]
+	},
+	resolve: {
+		alias: {
+			'vue$': 'vue/dist/vue.esm.js'
+		}
 	},
 	plugins: [
 		new webpack.DefinePlugin({
@@ -49,7 +65,7 @@ var webpackConfig = merge(baseWebpackConfig, {
 		new webpack.LoaderOptionsPlugin({
 			minimize: true
 		}),
-		new ExtractTextPlugin("style.css")
+		new ExtractTextPlugin("vue-simple-upload.css")
 	]
-})
+}
 module.exports = webpackConfig
