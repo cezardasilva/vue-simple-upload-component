@@ -3,6 +3,7 @@ var webpack = require('webpack')
 
 var baseWebpackConfig = require('./webpack.base.conf')
 var merge = require('webpack-merge')
+var utils = require('./utils')
 
 var webpackConfig = merge(baseWebpackConfig, {
 	entry: {
@@ -12,6 +13,9 @@ var webpackConfig = merge(baseWebpackConfig, {
 		filename: 'dist/vue-simple-upload.js',
 		library: 'VueUploadFile',
 		libraryTarget: 'umd'
+	},
+	module: {
+		loaders: utils.styleLoaders({ sourceMap: false, extract: true })
 	},
 	plugins: [
 		new webpack.DefinePlugin({
