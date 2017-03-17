@@ -1,8 +1,15 @@
 var path = require('path')
 var webpack = require('webpack')
-var projectRoot = path.resolve(__dirname, '../')
 
 module.exports = {
+	entry: {
+		"vue-simple-upload": './src/index.js'
+	},
+	output: {
+		path: './dist',
+		publicPath: '/dist/',
+		filename: "[name].js"
+	},
 	module: {
 		rules: [
 			{
@@ -33,14 +40,11 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': `"${process.env.NODE_ENV || 'development'}"`
-		})
+		new webpack.optimize.OccurrenceOrderPlugin()
 	],
 	resolve: {
 		alias: {
-			'vue$': 'vue/dist/vue.common.js'
+			'vue$': 'vue/dist/vue.ems.js'
 		}
-	},
-	devtool: '#eval-source-map'
+	}
 }

@@ -68,8 +68,8 @@
 	<div class="upload-file" :class="{'upload-file-dragdrop': isDragDrop, 'is-dragover': isDragOver}" :id="`upload-file${itemIndex}`">
 		<input type="file" name="uploadFile" class="inputfile" :id="`uploadFile${itemIndex}`" @change="changed($event)">
 		<label :for="`uploadFile${itemIndex}`" v-show='!file'>
-			<template v-if="!isDragOver">{{message}}</template>
-			<template v-else>{{dragOverMessage}}</template>
+			<template v-if="!isDragOver"><div v-html="message"></div></template>
+			<template v-else><div v-html="dragOverMessage"></div></template>
 		</label>
 		<transition name="fade">
 			<div :id="`upload-file-preview-container${itemIndex}`" v-show="file">
