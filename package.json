@@ -2,7 +2,7 @@
   "name": "vue-simple-upload-component",
   "version": "0.5.0",
   "description": "A simple upload component for Vue.js 2.x",
-  "main": "./dist/vue-simple-upload.js",
+  "main": "./src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cezardasilva/vue-upload-component.git"
