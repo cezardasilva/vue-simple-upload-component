@@ -94,7 +94,7 @@ export default {
 			<span class="upload-file-filename"></span>
 			<button type="button" class="upload-file-remove-file">&times; ${this.cancelButtonTitle}</button>
 			</div>
-			<div class="upload-file-message">${uploadedMessage}</div>`
+			<div class="upload-file-message">${this.uploadedMessage}</div>`
 		}
 	},
 
