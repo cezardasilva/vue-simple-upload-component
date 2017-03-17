@@ -5,10 +5,14 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 var webpackConfig = {
 	entry: {
-		app: './src/index.js'
+		"vue-simple-upload": './src/index.js'
 	},
 	output: {
-		filename: 'vue-simple-upload.js'
+		path: './dist',
+		publicPath: '/dist/',
+		filename: "[name].js",
+		library: "VueUploadFile",
+		libraryTarget: "umd"
 	},
 	module: {
 		rules: [

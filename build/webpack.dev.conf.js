@@ -6,7 +6,7 @@ var FriendlyErrors = require('friendly-errors-webpack-plugin')
 
 var webpackConfig = {
 	entry: {
-		app: './src/demo.js'
+		app: './src/index.js'
 	},
 	output: {
 		path: path.resolve(__dirname, '../dist'),
@@ -49,11 +49,6 @@ var webpackConfig = {
 	plugins: [
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.NoEmitOnErrorsPlugin(),
-		new HtmlWebpackPlugin({
-			filename: './demo/index.html',
-			template: './demo/index.html',
-			inject: true
-		}),
 		new FriendlyErrors(),
 
 	],
