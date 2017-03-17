@@ -92,7 +92,7 @@ export default {
 			thumbnailTemplate: `<div class="upload-file-thumbnail"></div>
 			<div class="upload-file-details">
 			<span class="upload-file-filename"></span>
-			<button type="button" class="upload-file-remove-file">&times; ${this.cancelButtonTitle}</button>
+			<button type="button" class="upload-file-remove-file">${this.cancelButtonTitle}</button>
 			</div>
 			<div class="upload-file-message">${this.uploadedMessage}</div>`
 		}
