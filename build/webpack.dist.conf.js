@@ -3,19 +3,30 @@ var webpack = require('webpack')
 
 var baseWebpackConfig = require('./webpack.base.conf')
 var merge = require('webpack-merge')
-var utils = require('./utils')
+var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 var webpackConfig = merge(baseWebpackConfig, {
 	entry: {
 		app: './src/index.js'
 	},
 	output: {
-		filename: 'dist/vue-simple-upload.js',
+		filename: 'vue-simple-upload.js',
 		library: 'VueUploadFile',
 		libraryTarget: 'umd'
 	},
 	module: {
-		loaders: utils.styleLoaders({ sourceMap: false, extract: true })
+		rules: [
+			{
+				test: /\.vue$/,
+				loader: 'vue-loader',
+				options: {
+					loaders: {
+						'scss': 'vue-style-loader!css-loader!sass-loader',
+						'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+					}
+				}
+			}
+		]
 	},
 	plugins: [
 		new webpack.DefinePlugin({
@@ -33,6 +44,10 @@ var webpackConfig = merge(baseWebpackConfig, {
 		}),
 		new webpack.LoaderOptionsPlugin({
 			minimize: true
+		}),
+		new ExtractTextPlugin({
+		    filename: "[name].[contenthash].css",
+		    disable: process.env.NODE_ENV === "development"
 		})
 	]
 })
