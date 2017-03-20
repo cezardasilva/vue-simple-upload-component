@@ -1,13 +1,5 @@
 <style scoped lang="scss">
 .upload-file{
-	display: flex;
-	justify-content: space-between;
-	text-align: center;
-
-	&.is-dragover{
-		border-style: solid;
-	}
-
 	.inputfile {
 		width: 0.1px;
 		height: 0.1px;
@@ -17,16 +9,7 @@
 		z-index: -1;
 
 		&+ label {
-			font-size: 0.877em;
-			color: #393e46;
-			display: inline-block;
 			cursor: pointer;
-			padding: 10px 30px;
-			background-color: #ffffff;
-			border: 0;
-			margin-right: 10px;
-			border-radius: 3px;
-			flex: 1 1 0%;
 		}
 
 		&:focus + label, & + label:hover{
@@ -41,7 +24,6 @@
 	.fade-enter, .fade-leave-active {
 	  opacity: 0
 	}
-
 }
 
 </style>
@@ -94,7 +76,7 @@ export default {
 		uploadedMessage: {
 			type: String,
 			required: false,
-			default: "Teste"
+			default: ""
 		},
 		showButton: {
 			type: Boolean,
