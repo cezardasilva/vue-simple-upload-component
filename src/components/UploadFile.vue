@@ -53,10 +53,13 @@ export default {
 		return {
 			file: false,
 			isDragOver: false,
-			filedetailsTemplate: `<div class="upload-file-thumbnail"></div>
+			filedetailsTemplate: `
 			<div class="upload-file-details">
-			<span class="upload-file-filename"></span>
-			<button type="button" class="upload-file-remove-file">${this.cancelButton}</button>
+				<div class="upload-file-thumbnail"></div>
+				<div class="upload-file-details-body">
+					<span class="upload-file-filename"></span>
+					<button type="button" class="upload-file-remove-file">${this.cancelButton}</button>
+				</div>
 			</div>
 			<div class="upload-file-message">${this.uploadedMessage}</div>`
 		}
