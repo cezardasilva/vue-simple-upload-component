@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<upload-file></upload-file>
+		<upload-file :acceptedFormats="['application/pdf']" :isDragDrop="true"></upload-file>
 	</div>
 </template>
 

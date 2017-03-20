@@ -19,10 +19,10 @@
 
 	//Fade
 	.fade-enter-active, .fade-leave-active {
-	  transition: opacity .5s
+		transition: opacity .5s
 	}
 	.fade-enter, .fade-leave-active {
-	  opacity: 0
+		opacity: 0
 	}
 }
 
@@ -30,7 +30,7 @@
 
 <template>
 	<div class="upload-file" :class="{'upload-file-dragdrop': isDragDrop, 'is-dragover': isDragOver}" :id="`upload-file${itemIndex}`">
-		<input type="file" name="uploadFile" class="inputfile" :id="`uploadFile${itemIndex}`" @change="changed($event)">
+		<input type="file" name="uploadFile" class="inputfile" :id="`uploadFile${itemIndex}`" :accept="acceptedFormats.join(',')" @change="changed($event)">
 		<label :for="`uploadFile${itemIndex}`" v-show='!file'>
 			<template v-if="!isDragOver"><div v-html="message"></div></template>
 			<template v-else><div v-html="dragOverMessage"></div></template>
@@ -55,11 +55,11 @@ export default {
 			isDragOver: false,
 			filedetailsTemplate: `
 			<div class="upload-file-details">
-				<div class="upload-file-thumbnail"></div>
-				<div class="upload-file-details-body">
-					<span class="upload-file-filename"></span>
-					<button type="button" class="upload-file-remove-file">${this.cancelButton}</button>
-				</div>
+			<div class="upload-file-thumbnail"></div>
+			<div class="upload-file-details-body">
+			<span class="upload-file-filename"></span>
+			<button type="button" class="upload-file-remove-file">${this.cancelButton}</button>
+			</div>
 			</div>
 			<div class="upload-file-message">${this.uploadedMessage}</div>`
 		}
@@ -112,6 +112,13 @@ export default {
 			type: Boolean,
 			required: false,
 			default: false
+		},
+		acceptedFormats: {
+			type: Array,
+			required: false,
+			default() {
+				return []
+			}
 		}
 	},
 
@@ -136,9 +143,7 @@ export default {
 	methods: {
 		changed(e){
 			e.preventDefault()
-			this.file = e.target.files[0];
-			this.addFileThumbnail()
-			this.$emit('selected-file', this.file)
+			this.addFile(false, e)
 		},
 		changeLabel(e){
 			var label = e.target.nextElementSibling
@@ -167,9 +172,21 @@ export default {
 		drop(e){
 			e.preventDefault()
 			this.isDragOver = false
-			this.file = e.dataTransfer.files[0]
-			this.addFileThumbnail()
-			this.$emit('selected-file', this.file)
+			this.addFile(true, e)
+		},
+		addFile(drop, e){
+			this.file = (drop) ? e.dataTransfer.files[0] : e.target.files[0]
+			if (this.acceptedFormats.length > 0) {
+				if (this.acceptedFormats.indexOf(this.file.type) > -1) {
+					this.addFileThumbnail()
+					this.$emit('selected-file', this.file)
+				}else{
+					this.file = null
+				}
+			}else{
+				this.addFileThumbnail()
+				this.$emit('selected-file', this.file)
+			}
 		},
 		addFileThumbnail(){
 			let previewContainer = this.getEmptyPreviewContainer()
