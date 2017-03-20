@@ -1,29 +1,11 @@
 <style scoped lang="scss">
 .upload-file{
 	display: flex;
-	padding: 10px 20px;
-	background-color: #ffffff;
-	border: 2px dashed #f0f0f0;
-	border-radius: 4px;
-	margin: 20px 0;
 	justify-content: space-between;
 	text-align: center;
 
 	&.is-dragover{
 		border-style: solid;
-	}
-
-	.button{
-		background: #393e46;
-		color: #FFF;
-		font-size: 0.877em;
-		border: none;
-		padding: 10px 30px;
-		cursor: pointer;
-		-moz-transition: all .2s;
-		-o-transition: all .2s;
-		-webkit-transition: all .2s;
-		transition: all .2s;
 	}
 
 	.inputfile {
@@ -89,10 +71,10 @@ export default {
 		return {
 			file: false,
 			isDragOver: false,
-			thumbnailTemplate: `<div class="upload-file-thumbnail"></div>
+			filedetailsTemplate: `<div class="upload-file-thumbnail"></div>
 			<div class="upload-file-details">
 			<span class="upload-file-filename"></span>
-			<button type="button" class="upload-file-remove-file">${this.cancelButtonTitle}</button>
+			<button type="button" class="upload-file-remove-file">${this.cancelButton}</button>
 			</div>
 			<div class="upload-file-message">${this.uploadedMessage}</div>`
 		}
@@ -112,14 +94,14 @@ export default {
 		uploadedMessage: {
 			type: String,
 			required: false,
-			default: ""
+			default: "Teste"
 		},
 		showButton: {
 			type: Boolean,
 			required: false,
 			default: false
 		},
-		cancelButtonTitle: {
+		cancelButton: {
 			type: String,
 			required: false,
 			default: "Cancel"
@@ -212,7 +194,7 @@ export default {
 			let arrFileName = this.file.name.split(".")
 			let fileExtension = arrFileName[arrFileName.length - 1]
 
-			thumbnailTemplate.innerHTML = this.thumbnailTemplate
+			thumbnailTemplate.innerHTML = this.filedetailsTemplate
 			thumbnailTemplate.classList.add("upload-file-preview")
 
 			thumbnailTemplate.querySelector('.upload-file-filename').innerHTML = this.file.name
