@@ -199,8 +199,8 @@ export default {
 			thumbnailTemplate.innerHTML = this.filedetailsTemplate
 			thumbnailTemplate.classList.add("upload-file-preview")
 
-			thumbnailTemplate.querySelector('.upload-file-filename').innerHTML = this.file.name
-			thumbnailTemplate.querySelector('.upload-file-thumbnail').classList.add(`upload-file-${fileExtension}`)
+			thumbnailTemplate.querySelector('.upload-file-filename').innerHTML = `${this.file.name.substring(0, 24)}`
+			thumbnailTemplate.querySelector('.upload-file-thumbnail').classList.add(`upload-file-${fileExtension.toLowerCase()}`)
 			thumbnailTemplate.querySelector(".upload-file-remove-file").addEventListener("click", this.removeFile)
 
 			previewContainer.appendChild(thumbnailTemplate)

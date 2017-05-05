@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<upload-file :acceptedFormats="['application/pdf']" :isDragDrop="true"></upload-file>
+		<upload-file :acceptedFormats="['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword']" :isDragDrop="true"></upload-file>
 	</div>
 </template>
 
