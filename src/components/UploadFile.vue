@@ -42,7 +42,7 @@
 						<div class="upload-file-thumbnail" :class="[`upload-file-${getFileExtension(file)}`]"></div>
 						<div class="upload-file-details-body">
 							<span class="upload-file-filename">{{file.name.substring(0, 24)}}</span>
-							<button type="button" class="upload-file-remove-file" @click="onRemoveFile(file)">{{cancelButton}}</button>
+							<button type="button" class="upload-file-remove-file" @click="onRemoveFile(file)" v-html="cancelButton"></button>
 						</div>
 					</div>
 				</template>
