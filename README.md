@@ -3,9 +3,30 @@
 
 > A simple upload component for Vue.js 2.x
 
+
 ## Instalation
 ```bash
 npm install vue-simple-upload-component --save-dev
+```
+
+## Usage example
+
+```Vue
+<template>
+  <div>
+  	<upload-file @changed-files="uploadAction($event)"></upload-file>
+  </div>
+</template>
+
+<script>
+import UploadFile from 'vue-simple-upload-component'
+export default {
+	name: "MyComponent",
+	components: {
+		UploadFile
+	}
+}
+</script>
 ```
 
 ## Props
@@ -28,25 +49,13 @@ Properties 		| Description
 | Event 			| Description|
 |----------------|----------------|
 | send-file  		| Called if drag&drop is inactive and user pressed the 'Send' button		  |
-| selected-file	| When a file is added	|
-|remove-file		| Called when the actual file is removed		 	|
+| changed-files	| When files list's changed, added or removed a file. |
+| selected-file	| When a file is added (**REMOVED**)	|
+|remove-file		| Called when the actual file is removed	(**REMOVED**)	 	|
 
-## Usage
+## Change Log
 
-```Vue
-<template>
-  <div>
-  <upload-file @selected-file="uploadAction($event)" @remove-file="removeAction($event)"></upload-file>
-  </div>
-</template>
+### v1.0.0
 
-<script>
-import UploadFile from 'vue-simple-upload-component'
-export default {
-	name: "MyComponent",
-	components: {
-		UploadFile
-	}
-}
-</script>
-```
+> Added support to multiple files
+> Changed 'add' and 'remove' file methods.
