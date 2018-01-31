@@ -32,7 +32,7 @@
 	<div class="upload-file" :class="{'upload-file-dragdrop': isDragDrop, 'is-dragover': isDragOver}" :id="`upload-file${itemIndex}`">
 		<input type="file" name="uploadFile" class="inputfile" :id="`uploadFile${itemIndex}`" :accept="acceptedFormats.join(',')" @change="changed($event)" multiple>
 		<label :for="`uploadFile${itemIndex}`">
-			<template v-if="!isDragOver"><div v-html="message"></div></template>
+			<template v-if="!isDragOver && files.length <=	 0"><div v-html="message"></div></template>
 			<template v-else><div v-html="dragOverMessage"></div></template>
 		</label>
 		<transition name="fade">
